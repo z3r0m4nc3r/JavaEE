@@ -1,0 +1,1 @@
+{"estado":"activo","longitud":11.0,"latitud":26.0,"nombre":"dron1"}

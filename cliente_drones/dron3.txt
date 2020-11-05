@@ -1,0 +1,1 @@
+{"estado":"parado","longitud":-2.0,"latitud":30.0,"nombre":"dron3"}
