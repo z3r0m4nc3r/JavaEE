@@ -1,0 +1,4 @@
+<header style="text-align:right">
+	Bienvenido <%=usuario %><br/>
+	<a href="Desconectar"><input type="submit" value="Salir"/></a>
+	</header>
