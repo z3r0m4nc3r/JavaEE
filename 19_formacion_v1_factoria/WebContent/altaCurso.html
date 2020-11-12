@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Alta de Curso</title>
+</head>
+<body>
+<h1>Nuevo Curso</h1>
+	<form action="FrontController?option=doAltaCurso" method="post" enctype="multipart/form-data">	
+		
+		Nombre: <input type="text" name="nombre" placeholder="Introduce nombre" required="required"><br/><br/>
+		Duracion: <input type="number" name="duracion" placeholder="Introduce duracion" required="required"><br/><br/>
+		Fecha de inicio: <input type="date" name="fechaInicio" placeholder="Introduce fecha de inicio" required="required"><br/><br/>
+		<input type="submit" value="Guardar">	
+	</form><br/>
+<a href="FrontController?option=toMenu"><input type="button" value="Volver"></a>
+</body>
+</html>
