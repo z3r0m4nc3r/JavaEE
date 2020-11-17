@@ -6,6 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 
+/**
+ * The persistent class for the cursos database table.
+ * 
+ */
 @Entity
 @Table(name="cursos")
 @NamedQuery(name="Curso.findAll", query="SELECT c FROM Curso c")
@@ -13,6 +17,7 @@ public class Curso implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCurso;
 
 	private int duracion;
@@ -22,9 +27,9 @@ public class Curso implements Serializable {
 
 	private String nombre;
 
-	//bi-directional many-to-many association to Alumno
-	@ManyToMany(mappedBy="cursos")
-	private List<Alumno> alumnos;
+	//bi-directional many-to-one association to Matricula
+	@OneToMany(mappedBy="curso")
+	private List<Matricula> matriculas;
 
 	public Curso() {
 	}
@@ -69,12 +74,26 @@ public class Curso implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public List<Alumno> getAlumnos() {
-		return this.alumnos;
+	public List<Matricula> getMatriculas() {
+		return this.matriculas;
 	}
 
-	public void setAlumnos(List<Alumno> alumnos) {
-		this.alumnos = alumnos;
+	public void setMatriculas(List<Matricula> matriculas) {
+		this.matriculas = matriculas;
+	}
+
+	public Matricula addMatricula(Matricula matricula) {
+		getMatriculas().add(matricula);
+		matricula.setCurso(this);
+
+		return matricula;
+	}
+
+	public Matricula removeMatricula(Matricula matricula) {
+		getMatriculas().remove(matricula);
+		matricula.setCurso(null);
+
+		return matricula;
 	}
 
 }

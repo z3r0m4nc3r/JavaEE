@@ -5,6 +5,10 @@ import javax.persistence.*;
 import java.util.List;
 
 
+/**
+ * The persistent class for the alumnos database table.
+ * 
+ */
 @Entity
 @Table(name="alumnos")
 @NamedQuery(name="Alumno.findAll", query="SELECT a FROM Alumno a")
@@ -22,22 +26,14 @@ public class Alumno implements Serializable {
 
 	private String password;
 
-	//bi-directional many-to-many association to Curso
-	@ManyToMany
-	@JoinTable(
-		name="matriculas"
-		, joinColumns={
-			@JoinColumn(name="usuario")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="idCurso")
-			}
-		)
-	private List<Curso> cursos;
+	//bi-directional many-to-one association to Matricula
+	@OneToMany(mappedBy="alumno")
+	private List<Matricula> matriculas;
 
 	public Alumno() {
 	}
-
+	
+	
 	public Alumno(String usuario, int edad, String email, String nombre, String password) {
 		super();
 		this.usuario = usuario;
@@ -46,6 +42,7 @@ public class Alumno implements Serializable {
 		this.nombre = nombre;
 		this.password = password;
 	}
+
 
 	public String getUsuario() {
 		return this.usuario;
@@ -87,12 +84,26 @@ public class Alumno implements Serializable {
 		this.password = password;
 	}
 
-	public List<Curso> getCursos() {
-		return this.cursos;
+	public List<Matricula> getMatriculas() {
+		return this.matriculas;
 	}
 
-	public void setCursos(List<Curso> cursos) {
-		this.cursos = cursos;
+	public void setMatriculas(List<Matricula> matriculas) {
+		this.matriculas = matriculas;
+	}
+
+	public Matricula addMatricula(Matricula matricula) {
+		getMatriculas().add(matricula);
+		matricula.setAlumno(this);
+
+		return matricula;
+	}
+
+	public Matricula removeMatricula(Matricula matricula) {
+		getMatriculas().remove(matricula);
+		matricula.setAlumno(null);
+
+		return matricula;
 	}
 
 }

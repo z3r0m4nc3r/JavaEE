@@ -2,12 +2,13 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
-
 
 @Entity
 @Table(name="alumnos")
-@NamedQuery(name="Alumno.findAll", query="SELECT a FROM Alumno a")
+@NamedQueries({
+@NamedQuery(name="Alumno.findAll", query="SELECT a FROM Alumno a"),
+@NamedQuery(name="Alumno.findByUsuario",query="Select c From Alumno c Where c.usuario=?1")
+})
 public class Alumno implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -22,27 +23,16 @@ public class Alumno implements Serializable {
 
 	private String password;
 
-	//bi-directional many-to-many association to Curso
-	@ManyToMany
-	@JoinTable(
-		name="matriculas"
-		, joinColumns={
-			@JoinColumn(name="usuario")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="idCurso")
-			}
-		)
-	private List<Curso> cursos;
-
 	public Alumno() {
 	}
 
 	public Alumno(String usuario, int edad, String email, String nombre, String password) {
 		super();
 		this.usuario = usuario;
+	
 		this.edad = edad;
 		this.email = email;
+		
 		this.nombre = nombre;
 		this.password = password;
 	}
@@ -85,14 +75,6 @@ public class Alumno implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public List<Curso> getCursos() {
-		return this.cursos;
-	}
-
-	public void setCursos(List<Curso> cursos) {
-		this.cursos = cursos;
 	}
 
 }
