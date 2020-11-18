@@ -17,14 +17,14 @@
 		<th>Nombre</th>
 		<th>Edad</th>
 		<th>Puesto</th>
-		<th>Foto</th>
 		<th>Email</th>
+		<th>Foto</th>
 		<th></th>
 	</tr>
 		
 			<%
-						CandidatosServiceImpl service=new CandidatosServiceImpl();
-						List<Candidato> empleados= service.recuperarCandidatos();
+						
+						List<Candidato> empleados= (List<Candidato>) request.getAttribute("candidatos");
 							for(int i=0;i<empleados.size();i++){
 					%>
 					<tr><td>

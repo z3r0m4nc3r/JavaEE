@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.List,model.Candidato,service.CandidatosService"%>
+    pageEncoding="ISO-8859-1" import="java.util.List,model.Candidato,service.CandidatosServiceImpl"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +22,11 @@
 		<th></th>
 	</tr>
 		
-			<%CandidatosService service=new CandidatosService();
-			List<Candidato> empleados= service.recuperarCandidatos();
-				for(int i=0;i<empleados.size();i++){ %>
+			<%
+						CandidatosServiceImpl service=new CandidatosServiceImpl();
+						List<Candidato> empleados= service.recuperarCandidatos();
+							for(int i=0;i<empleados.size();i++){
+					%>
 					<tr><td>
 						<%=empleados.get(i).getNombre()%>
 					</td>
