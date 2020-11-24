@@ -1,5 +1,6 @@
 package repository;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -50,6 +51,15 @@ public class CursosRepositoryImpl implements CursosRepository {
 		jpql+="(select c from Curso c join c.alumnos a where a.usuario=?1)"; //cursos del alumno 1
 		TypedQuery<Curso> query=em.createQuery(jpql,Curso.class);
 		query.setParameter(1, usuario);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Curso> cursosPorFecha(Date fechaInicio, Date fechaFin) {
+		String jpql="Select c From Curso c where c.fechaInicio BETWEEN :fechaInicio AND :fechaFin";
+		TypedQuery<Curso> query=em.createQuery(jpql,Curso.class);
+		query.setParameter("fechaInicio", fechaInicio);
+		query.setParameter("fechaFin", fechaFin);
 		return query.getResultList();
 	}
 

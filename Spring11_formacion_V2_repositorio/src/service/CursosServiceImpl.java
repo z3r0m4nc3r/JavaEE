@@ -1,5 +1,6 @@
 package service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,13 @@ public class CursosServiceImpl implements CursosService {
 	public Curso recuperarCurso(int idCurso) {
 		if(cursosRepository.cursoPorId(idCurso)!=null) {
 			return cursosRepository.cursoPorId(idCurso);
+		}else return null;
+	}
+
+	@Override
+	public List<Curso> cursosPorFecha(Date fechaInicio, Date fechaFin) {
+		if(fechaInicio.before(fechaFin)) {
+		return cursosRepository.cursosPorFecha(fechaInicio, fechaFin);
 		}else return null;
 	}
 	

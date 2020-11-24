@@ -1,5 +1,6 @@
 package service;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -12,5 +13,6 @@ public interface CursosService {
 	List<Curso> cursosAlumno(String usuario);
 	List<Curso> cursosDisponibles(String usuario);
 	Curso recuperarCurso (int idCurso);
+	List<Curso> cursosPorFecha(Date fechaInicio, Date fechaFin);
 	
 }

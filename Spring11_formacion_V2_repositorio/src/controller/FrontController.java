@@ -63,6 +63,13 @@ public class FrontController extends HttpServlet {
 			case "toMenu":
 				url="menu.html";
 				break;
+			case "toVerMatriculas":
+				url="verMatriculas.jsp";
+				break;
+			case "doVerMatriculas":
+				request.getRequestDispatcher("ListaMatriculasAction").include(request, response);
+				url="verMatriculas.jsp";
+				break;
 						
 		}
 		request.getRequestDispatcher(url).forward(request, response);

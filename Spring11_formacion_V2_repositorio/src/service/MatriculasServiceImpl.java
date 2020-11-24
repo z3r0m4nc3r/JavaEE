@@ -23,6 +23,7 @@ public class MatriculasServiceImpl implements MatriculasService {
 		if(alumno!=null&&curso!=null) {
 			alumno.getCursos().add(curso);
 			curso.getAlumnos().add(alumno);
+			alumnosRepository.actualizarAlumno(alumno);
 		}
 
 	}

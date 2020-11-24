@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.Alumno;
@@ -17,7 +18,7 @@ public class AlumnosRepositoryImpl implements AlumnosRepository {
 	@PersistenceContext(unitName="formacionPU")
 	EntityManager em;
 	
-	@Transactional
+	@Transactional(propagation=Propagation.REQUIRED) //opcion por defecto
 	@Override
 	public void guardarAlumno(Alumno alumno) {
 		em.persist(alumno);

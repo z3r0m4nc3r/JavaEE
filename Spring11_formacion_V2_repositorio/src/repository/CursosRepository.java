@@ -1,5 +1,6 @@
 package repository;
 
+import java.util.Date;
 import java.util.List;
 
 import model.Curso;
@@ -11,7 +12,7 @@ public interface CursosRepository {
 	List<Curso> todosCursos();
 	List<Curso> cursosAlumno(String usuario);
 	List<Curso> cursosDisponiblesAlumno(String usuario);
-	
+	List<Curso> cursosPorFecha(Date fechaInicio, Date fechaFin);
 	
 
 }
