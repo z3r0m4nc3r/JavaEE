@@ -12,7 +12,7 @@
 <title>Matriculas por fecha</title>
 </head>
 <body class="w3-blue-grey">
-	<div class="w3-container">
+	<div class="w3-auto">
 
 
 		<div class="w3-responsive w3-light-grey w3-opacity w3-round-large">
