@@ -32,22 +32,6 @@
   	<artifactId>proyecto.padre</artifactId>
   	<version>0.0.1-SNAPSHOT</version>
   </parent>
-  <dependencies>
-  	<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
-	<dependency>
-	    <groupId>javax.servlet</groupId>
-	    <artifactId>jstl</artifactId>
-	    <version>1.2</version>
-	</dependency>
-  	
- 	<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
-	<dependency>
-	    <groupId>org.springframework.data</groupId>
-	    <artifactId>spring-data-jpa</artifactId>
-	    <version>${spring.data.jpa}</version>
-	</dependency>
- 	
- 
-  </dependencies>
+  
   
 </project>
