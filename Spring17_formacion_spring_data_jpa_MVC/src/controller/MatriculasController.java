@@ -1,0 +1,34 @@
+package controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+
+import service.MatriculasService;
+
+@Controller
+public class MatriculasController {
+	
+@Autowired
+MatriculasService service;
+
+@PostMapping("doMatricular")
+public String matricular (@SessionAttribute("usuario") String usuario,
+			@RequestParam("idCurso") Integer idCurso) {
+	service.matricularAlumno(usuario, idCurso);
+	return "..//menu";
+}
+
+@PostMapping("doVerMatriculas")
+public String consultarMatriculas (@RequestParam("fecha1") String fecha1,
+			@RequestParam("fecha2") String fecha2,
+			HttpServletRequest request) {
+	request.setAttribute("matriculas", service.consultarMatriculas(fecha1, fecha2));
+	return "matriculas";
+}
+
+}
