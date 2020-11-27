@@ -1,0 +1,13 @@
+Nuevo Maven project
+marcamos create a simple project
+Establecemos Group id (librerias.padre.group) Artifact Id (librerias.padre)
+Packaging POM
+metemos librerias en pom.xml
+Para utilizarlas en el pom.xml del proyecto hijo
+metemos etiqueta:
+ <parent>
+  	<groupId>proyectos.padre.grupo</groupId>
+  	<artifactId>proyecto.padre</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
+  </parent>
+  entre el cierre </build> y el </proyect>
