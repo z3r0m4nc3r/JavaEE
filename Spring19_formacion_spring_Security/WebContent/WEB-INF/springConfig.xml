@@ -16,7 +16,7 @@
 	<context:component-scan base-package="service,repository"/>
 	<!-- datasource del servidor -->
 	<jee:jndi-lookup jndi-name="refformacion" id="dataServidor"/>
-	
+	<jee:jndi-lookup jndi-name="dataUsers" id="dataUsers"/>
 	<!-- configuración integración Spring-JPA-Hibernate -->
 	<!-- creación adaptador JPA-Hibernate -->
 	<bean id="adapter"

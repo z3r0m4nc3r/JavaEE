@@ -27,10 +27,10 @@
 			<!--  <security:password-encoder hash="sha"/>-->
 			<!-- opción 1. Usuarios en el propio archivo -->
 					<!--  el usuario se guarda en una cookie de sesion JSESSIONID -->
-			<security:user-service>
+			<!--  <security:user-service>
 				<security:user name="user1" password="{bcrypt}user1" authorities="ROLE_USER"/>
 				<security:user name="user2" password="{bcrypt}user2" authorities="ROLE_USER,ROLE_ADMIN"/>
-			</security:user-service>
+			</security:user-service>-->
 			
 			<!-- opción 2. Usuarios en archivo de tipo properties 
 			<security:user-service properties="/WEB-INF/usuarios.properties"/>
@@ -38,11 +38,11 @@
 			user1=pw1,ROLE_USER,enabled
 			user2=pw2, ROLE_USER,ROLE_ADMIN, enabled
 			-->
-			<!-- opción 3. Usuarios en una base de datos 
+			<!-- opción 3. Usuarios en una base de datos -->
 			<security:jdbc-user-service data-source-ref="dataUsers"
-										users-by-username-query="select user, pw, enabled from users Where user=?"
-										authorities-by-username-query="select user,auth From roles where user=?"/>
-			-->
+										users-by-username-query="select user, pwd, enabled from users Where user=?"
+										authorities-by-username-query="select user,rol From roles where user=?"/>
+			
 			
 		</security:authentication-provider>
 		
