@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<center>
+	<div align="center">
 		<h1>Alumnos</h1>
 		<%List<Alumno> alumnos=(List<Alumno>)request.getAttribute("alumnoscurso"); %>
 		<table border="1">
@@ -21,6 +21,6 @@
 		</table>
 		<br/><br/>
 		<a href="FrontController?option=toMenu">Volver</a>
-	</center>
+	</div>
 </body>
 </html>
