@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Buscador Spring+AJAX</title>
+
+<!--  Jquery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+
+<script type="text/javascript">
+	
+	function buscar(){
+		
+		$.get("doBuscar",{tema:$("#tema").val()},procesarRespuesta);
+	}
+	
+	function procesarRespuesta(data){
+		var html="";
+		$.each(data,function(index,item){
+			html+="<a href='"+item.url+"'>"+item.titulo+"</a><br/>";
+		});
+		
+		$("#resultado").html(html);
+	}
+</script>
+
+</head>
+<body>
+	<b><span th:text="${session.usuario}"></span></b>
+	
+	<div align="center">
+		<h1>Buscador</h1>
+		<form>
+			Introduce tema de búsqueda:<input type="text" name="tema" id="tema"/><br/><br/>
+			<input type="button" value="Buscar" onclick="buscar();"/>
+		</form>
+	
+	</div>
+	<br/><br/>
+	<div align="center" id="resultado">
+	
+	</div>
+</body>
+</html>

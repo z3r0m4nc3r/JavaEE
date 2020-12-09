@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<b><span th:text="${session.usuario}"/></b>
+	
+	<div align="center" th:if="${items}">
+		<h2 th:each="item: ${items}">
+		
+			<a th:href="${item.url}" th:text="${item.titulo}"/>  </a>
+		
+		</h2>
+	</div>
+	<div align="center" th:unless="${items}">
+	<h2>No hay resultados</h2>
+	</div>
+	
+	
+	<a href="toBuscador">Volver</a>
+</body>
+</html>
