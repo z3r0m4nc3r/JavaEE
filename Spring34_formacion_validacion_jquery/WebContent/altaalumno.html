@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<meta charset="ISO-8859-1">
+<title>Registro de Alumnos</title>
+
+<!--  Jquery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+
+<script type="text/javascript">
+
+	function init(){
+		$("span").hide();
+	}
+
+	function comprobarPass(){
+		var contraseña = $("#password").val();
+		if(contraseña.length>5){
+			$("#errorPass").hide()
+			return true;
+		}else {
+			$("#errorPass").show();
+			return false;
+		}
+	}
+	
+	function comprobarEmail(){
+		var email = $("#email").val();
+		if(email.includes("@")&&email.includes(".")){
+			$("#errorEmail").hide();
+			return true;
+		}else {
+			$("#errorEmail").show();
+			return false;
+		}
+	}
+	
+	function comprobarEdad(){
+		var edad = ParseInt($("#edad").val());
+		if(edad>17&&edad<100){
+			$("#errorEdad").hide();
+			return true;
+		}else {
+			$("#errorEdad").show();
+			return false;
+		}
+	}
+	
+	function comprobarDatos() {
+		/* contraseña al menos 6 caracteres
+		email debe incluir @ y .
+		edad comprendida entre 18 y 99 */
+		
+		return comprobarPass()&&comprobarEmail()&&comprobarEdad();
+		
+	}
+	
+</script>
+</head>
+<body class="w3-blue-grey" onload="init();">
+	
+	<div class="w3-auto">
+		<div class="w3-responsive w3-light-grey w3-opacity w3-round-large">
+	<fieldset>
+	<legend>Datos personales</legend>
+	
+		<form action="doAltaAlumno" onsubmit="return comprobarDatos();" method="post">
+			<label for="fusuario">Usuario</label><br>
+			<input type="text" name="usuario" required="required"><br>
+			<label for="fpassword">Contraseña</label><br>
+			<input type="password" name="password" required="required" id="password"><span id="errorPass"><b> La contraseña debe tener al menos 6 caracteres</b></span><br>
+			<label for="fnombre">Nombre</label><br>
+			<input type="text" name="nombre" required="required"><br>
+			<label for="femail">Email</label><br>
+			<input type="text" name="email" required="required" id="email"><span id="errorEmail"><b> Debe introducir un email válido</b></span><br>
+			<label for="fedad">Edad</label><br>
+			<input type="number" name="edad" required="required" id="edad"><span id="errorEdad"><b> Debe ser mayor de edad</b></span><br><br>
+			<input type="submit" value="Guardar">
+			<input type="reset">
+		</form>
+	</fieldset>
+	</div>
+	</div>
+	<p align="right"><a href="toMenu">Volver</a></p>
+</body>
+</html>
